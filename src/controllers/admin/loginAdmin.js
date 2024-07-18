@@ -20,7 +20,7 @@ const loginAdmin = async (req, res) => {
       role: user.role,
       uuid: user.password,
     };
-    const token = jwt.sign(payload, process.env.TEACHER_KEY, {
+    const token = jwt.sign(payload, process.env.ADMIN_KEY, {
       expiresIn: "1h",
     });
 

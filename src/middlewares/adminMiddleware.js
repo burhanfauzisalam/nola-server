@@ -10,7 +10,7 @@ const adminAuth = async (req, res, next) => {
       .status(401)
       .json({ message: "Unauthorized - No token provided" });
   }
-  verify(token, process.env["TEACHER_KEY"], (err, decoded) => {
+  verify(token, process.env["ADMIN_KEY"], (err, decoded) => {
     if (err) {
       if (err.name === "TokenExpiredError") {
         return res.status(401).json({ message: "Token expired" });
