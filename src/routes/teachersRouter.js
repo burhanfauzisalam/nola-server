@@ -9,5 +9,6 @@ router.post("/teacher", adminAuth, teacher.addTeacher);
 router.post("/teacher/login", teacher.loginTeacher);
 router.get("/teachers", adminAuth, teacher.allTeachers);
 router.get("/teacher", teacherAuth, teacher.detailTeacher);
+router.get("/teacher/:username", teacher.teacherById);
 
 export default router;

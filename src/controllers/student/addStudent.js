@@ -4,8 +4,8 @@ import studentModel from "../../models/studentModel.js";
 const addStudent = async (req, res) => {
   try {
     const parentID = req.parentID;
-    const { username, password, name, role } = req.body;
-    if (!username || !password || !name || !role) {
+    const { username, password, name } = req.body;
+    if (!username || !password || !name) {
       return res.status(400).json({
         status: req.status,
         message: "Please input required fields.",
@@ -27,7 +27,7 @@ const addStudent = async (req, res) => {
       username,
       password: hashedPassword,
       name,
-      role,
+      role: "student",
     });
     await newStudent.save();
     res.status(201).json({

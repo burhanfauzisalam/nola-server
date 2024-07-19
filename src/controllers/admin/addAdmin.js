@@ -3,8 +3,8 @@ import adminModel from "../../models/adminModel.js";
 
 const addAdmin = async (req, res) => {
   try {
-    const { username, password, name, role } = req.body;
-    if (!username || !password || !name || !role) {
+    const { username, password, name } = req.body;
+    if (!username || !password || !name) {
       return res.status(400).json({
         status: req.status,
         message: "Please input required fields.",
@@ -25,7 +25,7 @@ const addAdmin = async (req, res) => {
       username,
       password: hashedPassword,
       name,
-      role,
+      role: "admin",
     });
     await newAdmin.save();
     res.status(201).json({

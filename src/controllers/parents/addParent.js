@@ -3,8 +3,8 @@ import parentsModel from "../../models/parentsModel.js";
 
 const addParent = async (req, res) => {
   try {
-    const { username, password, role } = req.body;
-    if (!username || !password || !role) {
+    const { username, password, name } = req.body;
+    if (!username || !password || !name) {
       return res.status(400).json({
         status: req.status,
         message: "Please input required fields.",
@@ -25,7 +25,7 @@ const addParent = async (req, res) => {
       username,
       password: hashedPassword,
       name,
-      role,
+      role: "parent",
     });
     await newParent.save();
     res.status(201).json({
